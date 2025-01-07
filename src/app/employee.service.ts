@@ -9,7 +9,7 @@ import { Employee } from '../models/employee';
 })
 export class EmployeeService {
 
-  private apiUrl = `${environment.apiUrl}/employees`;
+  private apiUrl = `${environment.apiUrl}/Employee`;
   constructor(private http:HttpClient) { }
 
   getEmoloyees(): Observable<Employee[]>{
