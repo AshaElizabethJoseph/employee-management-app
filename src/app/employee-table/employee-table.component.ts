@@ -1,7 +1,8 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit  } from '@angular/core';
 import { Employee } from '../../models/employee';
 import { EmployeeService } from '../employee.service';  
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +15,8 @@ import { CommonModule } from '@angular/common';
 export class EmployeeTableComponent {
 
   employees: Employee[] = [];
-  constructor(private employeeService: EmployeeService) { }
+  constructor(private employeeService: EmployeeService,
+     private router: Router ) { }
   ngOnInit()
   {
     this.employeeService
@@ -24,6 +26,7 @@ export class EmployeeTableComponent {
       console.log(this.employees);
     });
   }
+
   deleteEmployee(id: number): void {
     this.employeeService
       .deleteEmployee(id)
@@ -36,6 +39,11 @@ export class EmployeeTableComponent {
           console.error('There was an error!', error);
         }
        });
-  }
+ }
+
+ editEmployee(id: number): void {
+    this.router.navigate([`edit/${id}`]);
+  } 
+
 
 }
