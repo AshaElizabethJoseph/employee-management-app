@@ -24,4 +24,18 @@ export class EmployeeTableComponent {
       console.log(this.employees);
     });
   }
+  deleteEmployee(id: number): void {
+    this.employeeService
+      .deleteEmployee(id)
+      .subscribe({
+        next: (response) => {
+          console.log('Employee deleted');
+          this.employees = this.employees.filter(employee => employee.id !== id);
+        },
+        error: (error) => {
+          console.error('There was an error!', error);
+        }
+       });
+  }
+
 }
