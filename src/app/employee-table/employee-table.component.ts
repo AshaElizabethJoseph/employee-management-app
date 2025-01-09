@@ -23,7 +23,7 @@ export class EmployeeTableComponent {
      .getEmoloyees()
      .subscribe((data: Employee[]) => {
       this.employees = data;
-      console.log(this.employees);
+      console.log(this.employees);      
     });
   }
 

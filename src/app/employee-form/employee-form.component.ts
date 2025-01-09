@@ -39,12 +39,17 @@ export class EmployeeFormComponent implements OnInit {
          this.isEditing = true;
 
          //console.log('editing employee with id:', id);
-
+        
          this.employeeService.getEmployeeById(Number(id)).subscribe(
           {
             next: (result) => this.employee = result,
-            error: (error) => this.errorMessage =`Error: ${error.status} - ${error.message}`
+            error: (error) => {
+              this.errorMessage =`Error: ${error.status} - ${error.message}`
+              console.error('There was an error!',  this.errorMessage );
+            }
+           
           })
+          console.log("errorMessage", this.errorMessage);
         }
       });
        
